@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/your-repository.git'
+                git 'https://github.com/pgupta584/api_test_framework_using_python.git'
             }
         }
 
