@@ -1,13 +1,11 @@
 pipeline {
     agent any
-
     stages {
         stage('Clone Repository') {
             steps {
                 git 'https://github.com/pgupta584/api_test_framework_using_python.git'
             }
         }
-
         stage('Setup Python Environment') {
             steps {
                 sh '''
@@ -17,7 +15,6 @@ pipeline {
                 '''
             }
         }
-
         stage('Run Pytest') {
             steps {
                 sh '''
@@ -27,7 +24,6 @@ pipeline {
                 '''
             }
         }
-
         stage('Publish Allure Results') {
             steps {
                 allure serve allure_dir
