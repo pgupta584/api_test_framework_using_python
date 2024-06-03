@@ -1,4 +1,5 @@
 pipeline {
+    echo 'Hello - This is Pipeline'
     agent any
     environment {
         VENV_DIR = 'venv'
