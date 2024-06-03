@@ -1,9 +1,9 @@
 pipeline {
-    echo 'Hello - This is Pipeline'
     agent any
+
     environment {
         VENV_DIR = 'venv'
-        ALLURE_RESULTS = 'allure_dir'
+        ALLURE_RESULTS = 'allure-results'
         ALLURE_REPORT = 'allure-report'
     }
 
@@ -39,7 +39,7 @@ pipeline {
                     source ${VENV_DIR}/bin/activate
 
                     # Run pytest with allure results
-                    pytest -s -m "smoke" --host=prod --disable-pytest-warnings --alluredir=${ALLURE_RESULTS}
+                    pytest --alluredir=${ALLURE_RESULTS}
                 """
             }
         }
