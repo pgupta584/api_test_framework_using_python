@@ -22,15 +22,15 @@ pipeline {
             steps {
                 sh '''
                     source venv/bin/activate
-                    pytest --junitxml=test-results.xml
+                    pytest -s -m "smoke" --host=prod --alluredir="allure_dir" --disable-pytest-warnings
                     deactivate
                 '''
             }
         }
 
-        stage('Publish Test Results') {
+        stage('Publish Allure Results') {
             steps {
-                junit 'test-results.xml'
+                allure serve allure_dir
             }
         }
     }
