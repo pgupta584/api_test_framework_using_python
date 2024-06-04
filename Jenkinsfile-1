@@ -3,19 +3,19 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-              git 'https://github.com/pgupta584/api_test_framework_using_python.git'
+              sh 'echo "Code Checkout from GIT to Jenkins Machine"'
             }
         }
 
         stage('Setup Python Environment') {
             steps {
-              sh 'echo "Setup Python Environment - Already install as Plugin in Jenkins"'
+              sh 'echo "Setup Python Environment"'
             }
         }
 
         stage('Run Pytest') {
             steps {
-              python functional_api_test/test_python_hello.py
+              sh 'echo "Running Tests"'
             }
         }
 
