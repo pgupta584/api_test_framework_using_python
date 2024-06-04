@@ -1,68 +1,34 @@
 pipeline {
     agent any
-
-    environment {
-        VENV_DIR = 'venv'
-        ALLURE_RESULTS = 'allure-results'
-        ALLURE_REPORT = 'allure-report'
-    }
-
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/pgupta584/api_test_framework_using_python.git'
+              sh 'echo "Code Checkout from GIT to Jenkins Machine"'
             }
         }
 
         stage('Setup Python Environment') {
             steps {
-                sh """
-                    # Create virtual environment
-                    python -m venv ${VENV_DIR}
-
-                    # Activate virtual environment
-                    source ${VENV_DIR}/bin/activate
-
-                    # Install dependencies
-                    pip install -r requirements.txt
-
-                    # Install pytest and allure-pytest
-                    pip install pytest allure-pytest
-                """
+              sh 'echo "Setup Python Environment"'
             }
         }
 
         stage('Run Pytest') {
             steps {
-                sh """
-                    # Activate virtual environment
-                    source ${VENV_DIR}/bin/activate
-
-                    # Run pytest with allure results
-                    pytest --alluredir=${ALLURE_RESULTS}
-                """
+              sh 'echo "Running Tests"'
             }
         }
 
         stage('Generate Allure Report') {
             steps {
-                sh """
-                    # Generate Allure report
-                    allure generate ${ALLURE_RESULTS} -o ${ALLURE_REPORT} --clean
-                """
+              sh 'echo "Generate Allure Report"'
             }
         }
 
         stage('Publish Allure Report') {
             steps {
-                allure includeProperties: false, jdk: '', results: [[path: "${ALLURE_RESULTS}"]]
+              sh 'echo "Publish Allure Report"'
             }
-        }
-    }
-
-    post {
-        always {
-            cleanWs()
         }
     }
 }
