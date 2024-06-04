@@ -15,14 +15,12 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                # Install pytest using pip
                 sh 'pip install pytest'
                 sh 'pip install request'
             }
         }
         stage('Run Tests') {
             steps {
-                # Run tests using pytest
                 sh 'pytest -m "getUser"'
             }
         }
