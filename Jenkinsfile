@@ -15,9 +15,11 @@ pipeline {
 
         stage('Run Pytest') {
             steps {
-                def rootDir = pwd()
-                echo "Jenkins root directory: ${rootDir}"
-                python ${rootDir}/functional_api_test/test_python_hello.py
+                script {
+                        def rootDir = pwd()
+                        echo "Jenkins root directory: ${rootDir}"
+                        python ${rootDir}/functional_api_test/test_python_hello.py
+                    }
             }
         }
 
