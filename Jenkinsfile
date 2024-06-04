@@ -16,7 +16,7 @@ pipeline {
         stage('Run Pytest') {
             steps {
                 dir('/') {
-                    python test_python_hello.py
+                  sh 'python test_python_hello.py'
                 }
             }
         }
