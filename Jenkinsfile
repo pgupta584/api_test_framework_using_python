@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh 'python3 -m venv venv'
                 sh 'source venv/bin/activate'
-                sh 'pip3 install requests'
+                sh 'pip3 install --user requests'
             }
         }
         stage('Run Tests') {
