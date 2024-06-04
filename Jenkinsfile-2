@@ -13,17 +13,11 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Run Pytest') {
             steps {
-                # Install pytest using pip
-                sh 'pip install pytest'
-                sh 'pip install request'
-            }
-        }
-        stage('Run Tests') {
-            steps {
-                # Run tests using pytest
-                sh 'pytest -m "getUser"'
+                sh 'echo "Testing Python"'
+                sh 'python3 --version'
+                sh 'python3 functional_api_test/test_python_hello.py'
             }
         }
 
