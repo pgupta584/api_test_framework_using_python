@@ -17,7 +17,7 @@ pipeline {
             steps {
                 sh 'echo "Testing Python"'
                 sh 'python3 --version'
-                sh 'python3 test_python_hello.py'
+                sh 'python3 functional_api_test/test_python_hello.py'
             }
         }
 
