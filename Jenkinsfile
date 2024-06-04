@@ -16,7 +16,7 @@ pipeline {
         stage('Run Pytest') {
             steps {
                 dir('/') {
-                    python functional_api_test/test_python_hello.py
+                    python test_python_hello.py
                 }
             }
         }
