@@ -24,6 +24,7 @@ pipeline {
             steps {
                 sh 'python3 -m venv venv'
                 sh 'source venv/bin/activate'
+                sh 'export PATH=$PATH:/path/to/pytest'
                 sh 'pytest -m "getUser"'
             }
         }
